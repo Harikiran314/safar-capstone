@@ -6,4 +6,5 @@ admin.site.register(Admin)
 admin.site.register(Request)
 admin.site.register(Accept)
 admin.site.register(Payment)
+admin.site.register(Bank_details)
 

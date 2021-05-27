@@ -118,7 +118,6 @@ def contact(request):
 @allowed_users(allowed_roles=['Account'])
 def profile(request):
     if request.method == 'POST':
-        print(request.POST)
         acc = Account.objects.get(username=request.user)
         request_category = request.POST['category']
         amount = request.POST['amount']
@@ -187,6 +186,45 @@ def causes_details(request, pk):
     return render(request, 'fund/causes-details.html', params)
 
 
+@login_required(login_url='Signin')
+@allowed_users(allowed_roles=['Account'])
+def myRequest(request, pk):
+    if request.method == 'POST':
+        requestId = request.POST['requestId']
+        amount = request.POST['amount']
+        account_no = request.POST['Bank-details']
+        account_name = request.POST['account-name']
+        IFSC = request.POST['IFSC']
+        acc = Account.objects.get(username=request.user)
+        req = Request.objects.get(id=requestId)
+        bank = Bank_details(account_id=acc,
+                            request_id=req,
+                            bank_account_no=account_no,
+                            bank_account_name=account_name,
+                            IFSC=IFSC
+                            )
+        payment = Payment(  account_id=acc,
+                            request_id=req,
+                            amount=amount,
+                            )
+        req.status = 'COMPLETED'
+        payment.save()
+        bank.save()
+        req.save()
+
+    try:
+        req = Request.objects.get(id=pk)
+    except Request.DoesNotExist:
+        raise Http404("Cause request does not exist")
+    acc = Account.objects.get(username=request.user)
+    if req.account_id!=acc:
+        raise Http404("Cause request does not exist")
+    params = {
+        "request": req
+    }
+    return render(request, 'fund/myRequest.html', params)
+
+
 def payment(request):
     context={}
     return render(request, 'fund/payment.html', context)
@@ -195,8 +233,31 @@ def payment(request):
 @login_required(login_url='AdminSignin')
 @allowed_users(allowed_roles=['Admin'])
 def admin(request):
-    context={}
-    return render(request, 'fund/admin_index.html', context)
+    if request.method == 'POST':
+        admin = Admin.objects.get(admin_username=request.user)
+        requestId = request.POST['requestId']
+        action = request.POST['action']
+        admin_message = request.POST['desc']
+        req = Request.objects.get(id=requestId)
+        pay = Payment.objects.get(request_id=req)
+        pay.status = action
+        if action == "SUCCESSFUL":
+            req.status = "PAYMENT SUCCESSFUL"
+        else:
+            req.status = "PAYMENT FAILED"
+        req.save()
+        pay.save()
+
+    admin = Admin.objects.get(admin_username=request.user)
+    req = Request.objects.all().filter(status='COMPLETED')
+    details = []
+    for r in req:
+        p = Bank_details.objects.get(request_id=r)
+        details.append((r,p))
+    params = {
+        "details": details,
+    }
+    return render(request, 'fund/admin_index.html', params)
 
 
 @login_required(login_url='AdminSignin')

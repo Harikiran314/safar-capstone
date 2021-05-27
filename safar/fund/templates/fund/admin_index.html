@@ -5,16 +5,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Admin Dashboard </title>
-    <link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico'%}"/>
-    <link href="{% static 'assets/css/loader.css'%}" rel="stylesheet" type="text/css" />
-    <script src="{% static 'assets/js/loader.js'%}"></script>
+    <title>SAFAR :: All Requests</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/img/favicon.ico'%}" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
     <link href="{% static 'bootstrap/css/bootstrap.min.css'%}" rel="stylesheet" type="text/css" />
     <link href="{% static 'assets/css/plugins.css'%}" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
-
+    
     <!--  BEGIN CUSTOM STYLE FILE  -->
     <link rel="stylesheet" type="text/css" href="{% static 'plugins/editors/quill/quill.snow.css'%}">
     <link href="{% static 'assets/css/apps/mailbox.css'%}" rel="stylesheet" type="text/css" />
@@ -24,28 +22,8 @@
     <link href="{% static 'plugins/sweetalerts/sweetalert.css'%}" rel="stylesheet" type="text/css" />
     <link href="{% static 'plugins/notification/snackbar/snackbar.min.css'%}" rel="stylesheet" type="text/css" />
     <!--  END CUSTOM STYLE FILE  -->
-
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-    <link href="{% static 'plugins/apex/apexcharts.css'%}" rel="stylesheet" type="text/css">
-    <link href="{% static 'assets/css/dashboard/dash_1.css'%}" rel="stylesheet" type="text/css" />
-    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-    <link href="{% static 'plugins/apex/apexcharts.css'%}" rel="stylesheet" type="text/css">
-    <link href="{% static 'assets/css/dashboard/dash_2.css'%}" rel="stylesheet" type="text/css" />
-    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-
 </head>
 <body class="sidebar-noneoverflow">
-    <!--== Start Preloader Content ==-->
-  <div class="preloader" id="load_screen">
-            <div class="loader">
-                <div class="shadow"></div>
-                <div class="box"></div>
-            </div>
-        </div>
-  <!--== End Preloader Content ==-->
-
 
     <!--  BEGIN NAVBAR  -->
     <div class="header-container fixed-top">
@@ -56,7 +34,7 @@
                 <li class="nav-item align-self-center page-heading">
                     <div class="page-header">
                         <div class="page-title">
-                            <h3>Admin</h3>
+                            <h3>Payment Requests</h3>
                         </div>
                     </div>
                 </li>
@@ -95,13 +73,13 @@
     </div>
     <!--  END NAVBAR  -->
 
-<!--  BEGIN MAIN CONTAINER  -->
+    <!--  BEGIN MAIN CONTAINER  -->
     <div class="main-container" id="container">
 
         <div class="overlay"></div>
         <div class="search-overlay"></div>
 
-             <!--  BEGIN SIDEBAR  -->
+            <!--  BEGIN SIDEBAR  -->
         <div class="sidebar-wrapper sidebar-theme">
             
             <nav id="sidebar">
@@ -132,278 +110,267 @@
                             </div>
                         </a>
                         <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled show" id="dashboard" data-parent="#accordionExample">
-                            <li class="active">
-                                <a href="{% url 'Admin' %}"> Analytics </a>
-                            </li>
                             <li>
+                                <a href="{% url 'Admin' %}"> Payment Requests </a>
+                            </li>
+                            <li class="active">
                                 <a href="{% url 'AdminRequests' %}"> Requests </a>
                             </li>
                         </ul>
-                    </li>
-                    
-                    <li class="menu menu-heading" hidden>
-                        <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg><span>Account and Support</span></div>
                     </li>                    
-
-                    <li class="menu" hidden>
-                        <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                                <span>User</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="users" data-parent="#accordionExample">
-                            <li>
-                                <a href="#"> Profile</a>
-                            </li>
-                            <li>
-                                <a href="user_account_setting.html"> Account Settings </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="menu" hidden >
-                        <a href="#pages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-                                <span>Support</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="pages" data-parent="#accordionExample">
-                            <li hidden>
-                                <a href="pages_helpdesk.html"> Helpdesk </a>
-                            </li>
-                            <li>
-                                <a href="pages_contact_us.html"> Contact Form </a>
-                            </li>
-                            <li hidden>
-                                <a href="pages_faq.html"> FAQ </a>
-                            </li>
-                            <li>
-                                <a href="pages_faq2.html"> FAQ </a>
-                            </li>
-                            <li>
-                                <a href="pages_privacy.html"> Privacy Policy </a>
-                            </li>
-                            <li hidden>
-                                <a href="pages_coming_soon.html"> Coming Soon </a>
-                            </li>
-                            <li hidden>
-                                <a href="#pages-error" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Error <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                                <ul class="collapse list-unstyled sub-submenu" id="pages-error" data-parent="#pages"> 
-                                    <li>
-                                        <a href="pages_error404.html"> 404 </a>
-                                    </li>
-                                    <li>
-                                        <a href="pages_error500.html"> 500 </a>
-                                    </li>
-                                    <li>
-                                        <a href="pages_error503.html"> 503 </a>
-                                    </li>
-                                    <li>
-                                        <a href="pages_maintenence.html"> Maintanence </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="menu menu-heading" hidden>
-                        <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg><span>EXTRA ELEMENTS</span></div>
-                    </li>
-
-                    <li class="menu" hidden>
-                        <a href="#authentication" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                                <span>Authentication</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="authentication" data-parent="#accordionExample">
-                            <li>
-                                <a href="auth_login_boxed.html"> Login Boxed </a>
-                            </li>
-                            <li>
-                                <a href="auth_register_boxed.html"> Register Boxed </a>
-                            </li>
-                            <li>
-                                <a href="auth_lockscreen_boxed.html"> Unlock Boxed </a>
-                            </li>
-                            <li>
-                                <a href="auth_pass_recovery_boxed.html"> Recover ID Boxed </a>
-                            </li>
-                            <li>
-                                <a href="auth_login.html"> Login Cover </a>
-                            </li>
-                            <li>
-                                <a href="auth_register.html"> Register Cover </a>
-                            </li>
-                            <li>
-                                <a href="auth_lockscreen.html"> Unlock Cover </a>
-                            </li>
-                            <li>
-                                <a href="auth_pass_recovery.html"> Recover ID Cover </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="menu" hidden>
-                        <a href="dragndrop_dragula.html" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-move"><polyline points="5 9 2 12 5 15"></polyline><polyline points="9 5 12 2 15 5"></polyline><polyline points="15 19 12 22 9 19"></polyline><polyline points="19 9 22 12 19 15"></polyline><line x1="2" y1="12" x2="22" y2="12"></line><line x1="12" y1="2" x2="12" y2="22"></line></svg>
-                                <span>Drag and Drop</span>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="menu" hidden>
-                        <a href="map_jvector.html" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
-                                <span>Maps</span>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="menu" hidden>
-                        <a href="charts_apex.html" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pie-chart"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
-                                <span>Charts</span>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="menu" hidden>
-                        <a href="#starter-kit" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-terminal"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-                                <span>Starter Kit</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="starter-kit" data-parent="#accordionExample">
-                            <li>
-                                <a href="starter_kit_blank_page.html"> Blank Page </a>
-                            </li>
-                            <li>
-                                <a href="starter_kit_boxed.html"> Boxed </a>
-                            </li>
-                            <li>
-                                <a href="starter_kit_collapsible_menu.html"> Collapsible </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="menu" hidden>
-                        <a href="../../documentation/index.html" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                                <span>Documentation</span>
-                            </div>
-                        </a>
-                    </li>
-                    
                 </ul>
                 
             </nav>
 
         </div>
 
+
         <!--  END SIDEBAR  -->
-        
+
         <!--  BEGIN CONTENT AREA  -->
         <div id="content" class="main-content">
             <div class="layout-px-spacing">
-
                 <div class="row layout-top-spacing">
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+                        <div class="row">
+                            <div class="col-xl-12  col-md-12">
+                                <div class="mail-box-container">
+                                    <div class="tab-title">
+                                        <div class="row">                                           
+                                            <div class="col-md-12 col-sm-12 col-12 mail-categories-container">
+                                                <div class="mail-sidebar-scroll">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="mailbox-inbox" class="accordion mailbox-inbox">
+                                        <div class="action-center" hidden>
+                                            <div class="" >
+                                                <div class="n-chk">
+                                                    <label class="new-control new-checkbox checkbox-primary">
+                                                      <input type="checkbox" class="new-control-input" id="inboxAll">
+                                                      <span class="new-control-indicator"></span><span></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="message-box">
+                                            <div class="message-box-scroll" id="ct">
+
+                                                {% for request,payment in details %}
+                                                <div id="unread-promotion-page" class="mail-item mailInbox" >
+                                                    <div class="animated animatedFadeInUp fadeInUp" id="mailHeadingThree">
+                                                        <div class="mb-0">
+                                                            <div class="mail-item-heading social collapsed"  data-toggle="collapse" role="navigation" data-target="#request{{request.id}}" aria-expanded="false">
+                                                                <div class="mail-item-inner">
+
+                                                                    <div class="d-flex">
+                                                                        <div class="n-chk text-center" hidden>
+                                                                            <label class="new-control new-checkbox checkbox-primary">
+                                                                              <input type="checkbox" class="new-control-input inbox-chkbox">
+                                                                              <span class="new-control-indicator"></span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="f-head">
+                                                                            <img src="{% static 'assets/img/favicon.ico'%}" class="user-profile" alt="avatar">
+                                                                        </div>
+                                                                        <div class="f-body">
+                                                                            <div class="meta-mail-time">
+                                                                                <p class="user-email" data-mailTo="laurieFox@mail.com">{{request.account_id.username}}</p>
+                                                                            </div>
+                                                                            <div class="meta-title-tag">
+                                                                                <p class="mail-content-excerpt" data-mailDescription='{"ops":[{"insert":"...\n"}]}'>
+                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-paperclip attachment-indicator">
+                                                                                <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+                                                                                </svg>
+                                                                                <span class="mail-title" data-mailTitle="request Page">Request Page --> {{request.request_category}} </span> ...
+                                                                                </p>
+                                                                                
+                                                                                <p class="meta-time align-self-center">{{request.pub_date}}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <div class="content-box">
+                                            <div class="d-flex msg-close">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left close-message"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                                                <h2 class="mail-title" data-selectedMailTitle=""></h2>
+                                            </div>
+                                            {% for request,payment in details %}
+                                            <div id="request{{request.id}}" class="collapse" aria-labelledby="mailHeadingThree" data-parent="#mailbox-inbox">
+                                                <div class="mail-content-container mailInbox" data-mailfrom="info@mail.com" data-mailto="linda@mail.com" data-mailcc="">
+
+                                                    <div class="d-flex justify-content-between">
+
+                                                        <div class="d-flex user-info">
+                                                            <div class="f-body">
+                                                                <div class="meta-title-tag">
+                                                                    <h4 class="mail-usr-name" data-mailtitle="Request Page">{{request.account_id.username}}</h4>
+                                                                </div>
+                                                                <div class="meta-mail-time">
+                                                                    <p class="user-email" data-mailto="laurieFox@mail.com">{{request.account_id.email}}</p>
+                                                                    &nbsp
+                                                                    <p class="meta-time align-self-center">{{request.pub_date}}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="action-btns">
+                                                            <button type="button"  onclick="get_request_data({{request.id}},{{request.collected}})" class="btn btn-primary btn-sm btn-block mb-2 my-buttons" style="height:35px" data-toggle="modal" data-target="#AddProduct">
+                                                                Update</button>
+                                                        </div>
+                                                        
+                                                    </div>
+
+                                                    <p class="mail-content"  data-mailTitle="Payment Request Page">
+                                                        <pre style="font-size:1em;">
+                                                        REQUEST ID       : {{request.id}}<br>
+                                                        NAME             : {{request.account_id.username}}<br>
+                                                        REQUEST CATEGORY : {{request.request_category}}<br>
+                                                        PAYMENT AMOUNT   : {{request.collected}}<br>
+                                                        <hr>
+                                                        <h5>Bank details: </h5>{{payment}}
+                                                        Account number  : {{payment.bank_account_no}}
+                                                        Account name    : {{payment.bank_account_name}}
+                                                        IFSC Code       : {{payment.IFSC}}
+                                                        
+                                                        </pre></p>
+                                                        <p class="mail-content"> DESCRIPTION : {{request.desc}}<br> </p>
 
 
-                    <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-                        <div class="row widget-statistic">
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                <div class="widget widget-one_hybrid widget-followers">
-                                    <div class="widget-heading">
-                                        <div class="w-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-at-sign"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                                    <div class="gallery text-center">
+                                                        <img alt="image-gallery" src="/supporting/{{request.identity_image}}" class="img-fluid mb-4 mt-4" style="width: 300px; height: 300px;">&nbsp                                                        
+                                                        <img alt="image-gallery" src="/supporting/{{request.image1}}" class="img-fluid mb-4 mt-4" style="width: 300px; height: 300px;">&nbsp
+                                                        <img alt="image-gallery" src="/supporting/{{request.image2}}" class="img-fluid mb-4 mt-4" style="width: 300px; height: 300px;">&nbsp
+                                                    </div>
+
+                                                </div>
+                                            </div> 
+                                            {% endfor %}
                                         </div>
-                                        <p class="w-value">310</p>
-                                        <h5 class="">Total Requests</h5>
+
                                     </div>
-                                    <div class="widget-content">    
-                                        <div class="w-chart">
-                                            <div id="hybrid_followers"></div>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="composeMailModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="modal"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                                <div class="compose-box">
+                                                    <div class="compose-content">
+                                                        <form>
+                                                            <div class="row" >
+                                                                <div class="col-md-12" >
+                                                                    <div class="d-flex mb-4 mail-form">
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row" >
+                                                                <div class="col-md-6">
+                                                                    <div class="d-flex mb-4 mail-to">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                                                        <div class="">
+                                                                            <input type="email" id="m-to" placeholder="To" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-6" hidden>
+                                                                    <div class="d-flex mb-4 mail-cc">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3" y2="6"></line><line x1="3" y1="12" x2="3" y2="12"></line><line x1="3" y1="18" x2="3" y2="18"></line></svg>
+                                                                        <div>
+                                                                            <input type="text" id="m-cc" placeholder="Cc" class="form-control">
+                                                                            <span class="validation-text"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="d-flex mb-4 mail-subject" >
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                                                <div class="w-100">
+                                                                    <input type="text" id="m-subject" placeholder="Subject" class="form-control">
+                                                                    <span class="validation-text"></span>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- <div class="d-flex" >
+                                                                <input type="file" class="form-control-file" id="mail_File_attachment" multiple="multiple">
+                                                            </div> -->
+
+                                                            <div id="editor-container">
+
+                                                            </div>
+
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                <div class="widget widget-one_hybrid widget-referral">
-                                    <div class="widget-heading">
-                                        <div class="w-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle" ><g><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M18 8l5 5"/><path d="M23 8l-5 5"/></g></svg>
-                                        </div>
-                                        <p class="w-value">19</p>
-                                        <h5 class="">Rejected</h5>
-                                    </div>
-                                    <div class="widget-content">    
-                                        <div class="w-chart">
-                                            <div id="hybrid_followers1"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                <div class="widget widget-one_hybrid widget-engagement">
-                                    <div class="widget-heading">
-                                        <div class="w-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-check"><g><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M17 11l2 2l4-4"/></g></svg>
-                                        </div>
-                                        <p class="w-value">60</p>
-                                        <h5 class="">Approved</h5>
-                                    </div>
-                                    <div class="widget-content">    
-                                        <div class="w-chart">
-                                            <div id="hybrid_followers3"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+
                         </div>
-                    </div>
 
-                   
-
-                    <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-                        <div class="widget widget-chart-two">
-                            <div class="widget-heading">
-                                <h5 class="">Donations by Category</h5>
-                            </div>
-                            <div class="widget-content">
-                                <div id="chart-2" class=""></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-            </div>
-
-                
-
-            <div class="footer-wrapper">
+                </div>
+                <div class="modal fade " id="AddProduct" tabindex="-1" role="dialog" aria-labelledby="AddProductTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered col-md-3" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title navbar-brand" style="font-size: 25px;" id="ModalTitle">ADMIN</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                            <form action="{{window.location.href}}" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="modal-body">
+                                    Admin Username: 
+                                    <input class="form-control mb-2"  type="text" value = "{{request.user.admin}}" readonly>
+                                    Request ID: <input id="requestId" name="requestId" class="form-control mb-2" type="text" value = "" readonly/>
+                                    Amount: <input class="form-control" id="amount" name="amount" type="text" value = "" readonly/>
+                                    Action: 
+                                    <select class="form-control" id="action" name="action">
+                                        <option>SUCCESSFUL</option>
+                                        <option>FAILED</option>
+                                    </select><br>
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="desc" name="desc" placeholder="Admin message//" rows="2"></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                    </form>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+        <div class="footer-wrapper">
                 <div class="footer-section f-section-1">
-                    <p class="">Copyright © 2020 <a target="_blank" href="#">Safar</a>, All rights reserved.</p>
+                    <p class="">Copyright © 2021 <a target="_blank" href="#">Safar</a>, All rights reserved.</p>
                 </div>
                 <div class="footer-section f-section-2">
                     <p class="">Coded with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></p>
@@ -412,35 +379,40 @@
         </div>
         <!--  END CONTENT AREA  -->
 
-
     </div>
     <!-- END MAIN CONTAINER -->
-
+    
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
-    <script src="{% static 'assets/js/libs/jquery-3.1.1.min.js'%}"></script>
-    <script src="{% static 'bootstrap/js/popper.min.js'%}"></script>
-    <script src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
-    <script src="{% static 'plugins/perfect-scrollbar/perfect-scrollbar.min.js'%}"></script>
-    <script src="{% static 'assets/js/app.js'%}"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+
+    
     <script>
         $(document).ready(function() {
             App.init();
         });
     </script>
+    <script>
+     function get_request_data(value,amount)
+    {
+        $('#requestId').val(value)
+        $('#amount').val(amount)
+    }
+    </script>
+    <script src="{% static 'assets/js/libs/jquery-3.1.1.min.js'%}"></script>
+    <script src="{% static 'bootstrap/js/popper.min.js'%}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'plugins/perfect-scrollbar/perfect-scrollbar.min.js'%}"></script>
+    <script src="{% static 'assets/js/app.js'%}"></script>
     <script src="{% static 'assets/js/custom.js'%}"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-    <script src="{% static 'plugins/apex/apexcharts.min.js'%}"></script>
-    <script src="{% static 'assets/js/dashboard/dash_1.js'%}"></script>
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-    <script src="{% static 'plugins/apex/apexcharts.min.js'%}"></script>
-    <script src="{% static 'assets/js/dashboard/dash_2.js'%}"></script>
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
     <script src="{% static 'assets/js/ie11fix/fn.fix-padStart.js'%}"></script>
     <script src="{% static 'plugins/editors/quill/quill.js'%}"></script>
     <script src="{% static 'plugins/sweetalerts/sweetalert2.min.js'%}"></script>
     <script src="{% static 'plugins/notification/snackbar/snackbar.min.js'%}"></script>
     <script src="{% static 'assets/js/apps/custom-mailbox.js'%}"></script>
+    
+</script>
 </body>
 </html>

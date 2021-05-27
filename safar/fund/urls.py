@@ -11,6 +11,7 @@ urlpatterns = [
     path('profile', views.profile, name="profile"),
     path('causes/', views.causes, name="causes"),
     path('causes/<str:pk>', views.causes_details, name="causes-details"),
+    path('myRequest/<str:pk>', views.myRequest, name="myRequest"),
     path('sign-in', views.sign_in, name="Signin"),
     path('sign-up', views.sign_up, name="SignUp"),
     path('signout', views.sign_out, name="Signout"),

@@ -160,6 +160,7 @@
                 <img src="{% static '/img/causes/'%}{{request.dpimage}}.jpg" alt="safar-HasTech" style="width: 370px; height: 200px;">
               </div>
               <div class="content">
+              <h6><b>Request-ID:&nbsp</b>&nbsp{{request.id}}.</h6>
                 <ul class="donate-info">
                   <li class="info-item">
                     <span class="info-title">Goal:</span>
@@ -175,7 +176,7 @@
                     <p class="amount">₹ {{request.remaining}}</p>
                   </li>
                 </ul>
-                <h5 class="title"><a href="#">{{request.request_category}}</a></h5>
+                <h5 class="title"><a href="{% url 'myRequest' request.id %}">{{request.request_category}}</a></h5>
                 <p><b>Deadline:&nbsp</b>&nbsp{{request.deadline}}.</p>
                 <p><b>Status:&nbsp</b>&nbsp{{request.status}}</p>
                 <span><b>Description: &nbsp</b>{{request.desc}}</span><br>
@@ -183,7 +184,7 @@
               </div>
               <div class="causes-footer">
                 <div class="admin">
-                  <h5><a href="#"><span class="icon-img"><img src="{% static 'img/icons/admin1.png'%}" alt="Icon"></span>{{request.account_id}}</a></h5>
+                  <h5><a href="{% url 'myRequest' request.id %}"><span class="icon-img"><img src="{% static 'img/icons/admin1.png'%}" alt="Icon"></span>{{request.account_id}}</a></h5>
                 </div>
                 </div>
             </div>
@@ -427,7 +428,7 @@
 			    </div>
           <div class="col">
               <div class="form-group">
-              <input class="form-control" id="amount" name="amount" placeholder="Enter amount" required>
+              <input class="form-control" id="amount" type="number" name="amount" placeholder="Enter amount" required>
               </div>
           </div>
               

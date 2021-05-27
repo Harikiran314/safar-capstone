@@ -42,7 +42,9 @@ class Request(models.Model):
         ('PENDING', 'PENDING'),
         ('ACCEPTED', 'ACCEPTED'),
         ('CANCELLED', 'CANCELLED'),
-        ('COMPLETED', 'COMPLETED')
+        ('COMPLETED', 'COMPLETED'),
+        ('PAYMENT SUCCESSFUL', 'PAYMENT SUCCESSFUL'),
+        ('PAYMENT FAILED', 'PAYMENT FAILED')
     )
     id = models.AutoField(primary_key=True)
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -134,4 +136,10 @@ class Payment(models.Model):
     status = models.CharField(max_length=50, default="PENDING", choices=STATUS)
     date = models.DateTimeField(default=now)
 
+class Bank_details(models.Model):
+    account_id = models.ForeignKey(Account, on_delete=models.CASCADE, null=True)
+    request_id = models.ForeignKey(Request, on_delete=models.CASCADE, null=True)
+    bank_account_no = models.CharField(max_length=20)
+    bank_account_name = models.CharField(max_length=40)
+    IFSC = models.CharField(max_length=20)
 

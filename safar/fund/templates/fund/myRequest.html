@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Causes Details – SAFAR</title>
+    <title>Request Details – SAFAR</title>
 
     <!--== Favicon ==-->
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}"  type="image/x-icon" />
@@ -113,8 +113,7 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="page-title-content text-center">
-              <h2 class="title text-white">Causes Details</h2>
-              <div class="bread-crumbs"><a href="{% url 'index' %}">Home<span class="breadcrumb-sep">//</span></a><span class="active">Causes//{{request.id}}</span></div>
+              <h2 class="title text-white">Request Details</h2>
               
             </div>
           </div>
@@ -133,8 +132,11 @@
                 <div class="causes-details">
                   <div class="thumb">
                     <img class="w-100" src="{% static '/img/causes/' %}{{request.dpimage}}.jpg" alt="Image-safar" >
-                  </div>
-                  <h4 class="cause-title">Request Category: {{request.request_category}}.</h4>
+                  </div><br>
+                  <h5><b>Request-ID:&nbsp</b>&nbsp{{request.id}}.</h5>
+                  <h4 class="cause-title"> Request Category: {{request.request_category}}</h4>
+                  <h5>Status:&nbsp[{{request.status}}]</h5>
+                  
                   
                   <div class="donate-info-wrp">
                     <div class="row">
@@ -164,7 +166,8 @@
                       </div>
                     </div>
                     <hr>
-                    <a class="btn-theme btn-gradient btn-slide btn-style" onclick="get_request_id({{request.id}})" data-toggle="modal" data-target="#AddProduct">Donate Now <img class="icon icon-img" src="{% static 'img/icons/arrow-line-right2.png'%}" alt="Icon" ></a>
+                    <div id="payment-btn">
+                     </div>
                   </div>
                   <span><b>Issued On:</b>&nbsp {{request.pub_date}}</span><br>
                   <span><b>Deadline:</b>&nbsp{{request.deadline}}</span><hr>
@@ -175,58 +178,6 @@
                       <img alt="image-gallery" src="/supporting/{{request.identity_image}}" class="img-fluid mb-4 mt-4" style="width: 220px; height: 220px;">&nbsp                                                        
                       <img alt="image-gallery" src="/supporting/{{request.image1}}" class="img-fluid mb-4 mt-4" style="width: 220px; height: 220px;">&nbsp
                       <img alt="image-gallery" src="/supporting/{{request.image2}}" class="img-fluid mb-4 mt-4" style="width: 220px; height: 220px;">&nbsp
-                  </div>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 an when
-                   an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                </div>
-                
-              </div>
-              <div class="sidebar-area">
-                <div class="widget">
-                  <h3 class="widget-title">Causes Categories</h3>
-                  <div class="separator-line">
-                    <img class="me-1" src="{% static 'img/shape/line-t2.png'%}" alt="Image-safar">
-                  </div>
-                  <div class="widget-category">
-                    <a href="{% url 'causes' %}?category=MEDICAL">MEDICAL <span>(18)</span></a>
-                    <a href="{% url 'causes' %}?category=LITERACY AND EDUCATION">LITERACY AND EDUCATION <span>(06)</span></a>
-                    <a href="{% url 'causes' %}?category=HUMAN RIGHTS">HUMAN RIGHTS<span>(19)</span></a>
-                    <a href="{% url 'causes' %}?category=PHYSICAL HELP">PHYSICAL HELP <span>(27)</span></a>
-                    <a href="{% url 'causes' %}?category=POVERTY">POVERTY <span>(27)</span></a>
-                    <a href="{% url 'causes' %}?category=OTHER">OTHER <span>(27)</span></a>                    
-                  </div>
-                </div>
-                <div class="widget">
-                  <h3 class="widget-title">Urgent Causes</h3>
-                  <div class="separator-line">
-                    <img class="me-1" src="{% static 'img/shape/line-t2.png'%}" alt="Image-safar">
-                  </div>
-                  <div class="widget-causes-item">
-                    <div class="thumb">
-                      <img src="{% static 'img/causes/022.jpg'%}" alt="safar-HasTech">
-                    </div>
-                    <div class="content">
-                      <h4 class="title"><a href="causes-details.html">Need School For Uganda Poor Children.</a></h4>
-                      <ul class="donate-info">
-                        <li class="info-item">
-                          <span class="info-title">Goal:</span>
-                          <span class="amount">₹ 5,000</span>
-                        </li>
-                        <li class="info-item">
-                          <span class="info-title">Raised:</span>
-                          <span class="amount">₹ 2,000</span>
-                        </li>
-                      </ul>
-                      <!-- Start Progress Item -->
-                      <div class="progress-item">
-                        <div class="progress-line">
-                          <div class="progress-bar-line" data-percent="75%"><span class="percent"></span></div>
-                        </div>
-                      </div>
-                      
-                        <a class="btn-theme btn-gradient btn-slide" href="#"><span>Donate Now <img class="icon icon-img" src="{% static 'img/icons/arrow-line-right2.png'%}" alt="Icon"></span></a>
-                      
-                    </div>
                   </div>
                 </div>
                 
@@ -239,137 +190,11 @@
     <!--== End Causes Area ==-->
   </main>
   <!--== Start Footer Area Wrapper ==-->
-  <footer class="footer-area">
-    <div class="footer-main">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-            <div class="widget-item">
-              <div class="about-widget">
-                <a class="footer-logo" href="index.html">
-                  <img src="{% static 'img/logo.png'%}" alt="Logo">
-                </a>
-                <p>Lorem Ipsum is simply dummy text of the industry orem Ipsum has been the industry's since the when unknown.</p>
-                <div class="widget-total-raised">
-                  <h4 class="raised-title">Total Raised:</h4>
-                  <div class="raised-amount">₹8,965</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-            <div class="widget-item">
-              <h4 class="widget-title line-style">Gallery</h4>
-              <div class="widget-gallery">
-                <div class="row row-cols-3 row-gutter-10">
-                  <div class="col">
-                    <div class="gallery-item">
-                      <img src="{% static 'img/photos/gallery1.jpg'%}" alt="safar-HasTech">
-                      <a class="icon" href="#/"><i class="icofont-instagram"></i></a>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="gallery-item">
-                      <img src="{% static 'img/photos/gallery2.jpg'%}" alt="safar-HasTech">
-                      <a class="icon" href="#/"><i class="icofont-instagram"></i></a>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="gallery-item">
-                      <img src="{% static 'img/photos/gallery3.jpg'%}" alt="safar-HasTech">
-                      <a class="icon" href="#/"><i class="icofont-instagram"></i></a>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="gallery-item">
-                      <img src="{% static 'img/photos/gallery4.jpg'%}" alt="safar-HasTech">
-                      <a class="icon" href="#/"><i class="icofont-instagram"></i></a>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="gallery-item">
-                      <img src="{% static 'img/photos/gallery5.jpg'%}" alt="safar-HasTech">
-                      <a class="icon" href="#/"><i class="icofont-instagram"></i></a>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="gallery-item">
-                      <img src="{% static 'img/photos/gallery6.jpg'%}" alt="safar-HasTech">
-                      <a class="icon" href="#/"><i class="icofont-instagram"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>              
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-            <div class="widget-item menu-wrap-two-column">
-              <h4 class="widget-title line-style">Quick Links</h4>
-              <nav class="widget-menu-wrap">
-                    <ul class="nav-menu nav">
-                      <li><a href="{% url 'about' %}">About Us</a></li>
-                      <li><a href="#/">Blog Post Terms</a></li>
-                      <li><a href="#/">Conditions</a></li>
-                      <li><a href="#/">Privacy Policy</a></li>
-                      <li><a href="#/">Documentation</a></li>
-                    </ul>
-                  </div>
-                  
-              </nav>
-          </div>
-        </div>
-      </div>
-      <!--== Scroll Top Button ==-->
-      <div class="scroll-to-top"><img src="{% static 'img/icons/arrow-up-line.png'%}" alt="Icon-Image"></div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <div class="footer-bottom-content">
-          <div class="row align-items-center">
-            <div class="col-12">
-              <div class="widget-copyright text-center">
-                <p>©2021 <span>SAFAR</span>. All rights reserved.</p>       
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="shape-layer">
-      <img src="{% static 'img/shape/footer-line.png'%}" alt="Image-safar">
-    </div>
-  </footer>
+  
   <!--== End Footer Area Wrapper ==-->
 
   <!--== Start Side Menu ==-->
-  <aside class="off-canvas-wrapper">
-    <div class="off-canvas-inner">
-      <div class="off-canvas-overlay"></div>
-      <!-- Start Off Canvas Content Wrapper -->
-      <div class="off-canvas-content">
-        <!-- Off Canvas Header -->
-        <div class="off-canvas-header">
-          <div class="logo-area">
-            <a href="index.html"><img src="{% static 'img/logo.png'%}" alt="Logo" /></a>
-          </div>
-          <div class="close-action">
-            <button class="btn-close"><i class="icofont-close"></i></button>
-          </div>
-        </div>
-
-        <div class="off-canvas-item">
-          <!-- Start Mobile Menu Wrapper -->
-          <div class="res-mobile-menu menu-active-one">
-            <!-- Note Content Auto Generate By Jquery From Main Menu -->
-          </div>
-          <!-- End Mobile Menu Wrapper -->
-        </div>
-        <!-- Off Canvas Footer -->
-        <div class="off-canvas-footer"></div>
-      </div>
-      <!-- End Off Canvas Content Wrapper -->
-    </div>
-  </aside>
+ 
   <!--== End Side Menu ==-->  
 </div>
 <!-- Modal -->
@@ -385,37 +210,35 @@
 		  <form action="{{window.location.href}}" method="POST" enctype="multipart/form-data">
 			  {% csrf_token %}
         <div class="modal-body">
-          Request Id: 
+          <h6>Request Id: </h6>
           <div class="form-group">
           <input class="form-control" id="requestId" name="requestId"  type="text" value = {{request.id}} readonly>
           </div>
 		      <div class="row">
+            
             <div class="col">
-              <div class="form-group">
-              <input class="form-control" id="amount" type="number" name="amount" placeholder="Enter amount" required>
+            <div class="form-group">
+              <h6>Amount:&nbsp</h6>
               </div>
-            </div>
-
-            <div class="col">
                 <div class="form-group" style="display: inline-block; float: left">
-                <input class="form-control" id="remaining" type="text" value = {{request.remaining}} readonly>
+                <input class="form-control" id="amount" name="amount" type="text" value = {{request.collected}} readonly>
                 </div>
             </div>
 		      </div>
         
 		      <div class="form-group">
-            <input class="form-control" id="card-details" name="card-details" placeholder="Enter card details" >
+            <input class="form-control" id="bank-details" type="number" name="Bank-details" placeholder="Enter Bank Account No." required>
 		      </div>
           <div class="row">
 			      <div class="col">
 			        <div class="form-group">
-				        <input class="form-control" id="cvv" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..?)\../g, '$1');"  name="cvv" placeholder="Enter cvv" >
+				        <input class="form-control" id="IFSC" name="IFSC" placeholder="Enter IFSC code" required>
 			        </div>
 			      </div>
 
             <div class="col">
                 <div class="form-group" style="display: inline-block; float: left">
-                  <input class="form-control" id="expiry" name="expiry" type= "date" placeholder="Enter expiry" >
+                  <input class="form-control" id="account-name" name="account-name" type= "text" placeholder="Enter account-name" required>
                 </div>
             </div>
 		      </div>
@@ -428,6 +251,19 @@
 	  </div>
 	</div>
 </div>
+<script type="text/javascript">
+ var status = "{{request.status}}";
+ 
+ if(status == "ACCEPTED"){
+     document.getElementById('payment-btn').innerHTML = '<a class="btn-theme btn-gradient btn-slide btn-style" onclick="get_request_id({{request.id}})" data-toggle="modal" data-target="#AddProduct">Request for Payment </a>'
+ } else if(status == "PAYMENT SUCCESSFUL"){
+          document.getElementById('payment-btn').innerHTML = '<h4>Payment has Completed..<h4>'
+ } else if(status == "COMPLETED"){
+          document.getElementById('payment-btn').innerHTML = '<h4>Requested for payment.<h4>'
+ }else if(status == "PAYMENT FAILED"){
+          document.getElementById('payment-btn').innerHTML = '<h4>Payment has Failed..<h4>'
+ } 
+</script>
 <script>
     function get_request_id(value)
   {
