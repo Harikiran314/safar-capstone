@@ -1,107 +1,163 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Sign Up</title>
 
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+        <!-- Font Icon -->
+        <link
+            rel="stylesheet"
+            href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}"
+        />
 
-    <!-- Main css -->
-    <link rel="stylesheet" href="{% static 'css/style_signup.css' %}">
-</head>
-<body id="signup_body">
-
-    <div class="main">
-
-        <!-- Sign up form -->
-        <section class="signup">
-            <div class="container">
-                <div class="signup-content">
-                    <div class="signup-form">
-                        <h2 class="form-title">Sign up</h2>
-                        <form method="POST" action="">
-						    {% csrf_token %}
-						    <div class="form-group">
-						    	<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
-							</div>
-                            <label for="username"><i class="zmdi zmdi-account-circle material-icons-name"></i></label>
-							{{form.username}}
-						    </div>
-                            <div class="form-group">
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+        <!-- Main css -->
+        <link rel="stylesheet" href="{% static 'css/style_signup.css' %}" />
+    </head>
+    <body id="signup_body">
+        <div class="main">
+            <!-- Sign up form -->
+            <section class="signup">
+                <div class="container">
+                    <div class="signup-content">
+                        <div class="signup-form">
+                            <h2 class="form-title">Sign up</h2>
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"
+                                            ><i class="fas fa-user"></i
+                                        ></span>
+                                    </div>
+                                    <label for="username"
+                                        ><i
+                                            class="
+                                                zmdi zmdi-account-circle
+                                                material-icons-name
+                                            "
+                                        ></i
+                                    ></label>
+                                    {{form.username}}
                                 </div>
-                                <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                {{form.fullname}}
+                                <div class="form-group">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"
+                                            ><i
+                                                class="fas fa-envelope-square"
+                                            ></i
+                                        ></span>
+                                    </div>
+                                    <label for="username"
+                                        ><i
+                                            class="
+                                                zmdi zmdi-account
+                                                material-icons-name
+                                            "
+                                        ></i
+                                    ></label>
+                                    {{form.fullname}}
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"
+                                            ><i
+                                                class="fas fa-envelope-square"
+                                            ></i
+                                        ></span>
+                                    </div>
+                                    <label for="username"
+                                        ><i
+                                            class="
+                                                zmdi zmdi-phone
+                                                material-icons-name
+                                            "
+                                        ></i
+                                    ></label>
+                                    {{form.phone}}
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"
+                                            ><i
+                                                class="fas fa-envelope-square"
+                                            ></i
+                                        ></span>
+                                    </div>
+                                    <label for="email"
+                                        ><i class="zmdi zmdi-email"></i
+                                    ></label>
+                                    {{form.email}}
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"
+                                            ><i class="fas fa-key"></i
+                                        ></span>
+                                    </div>
+                                    <label for="pass"
+                                        ><i class="zmdi zmdi-lock"></i
+                                    ></label>
+                                    {{form.password1}}
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"
+                                            ><i class="fas fa-key"></i
+                                        ></span>
+                                    </div>
+                                    <label for="re-pass"
+                                        ><i class="zmdi zmdi-lock-outline"></i
+                                    ></label>
+                                    {{form.password2}}
+                                </div>
+                                <div class="form-group form-button">
+                                    <input
+                                        type="submit"
+                                        class="form-submit"
+                                        value="Register"
+                                    />
+                                </div>
+                            </form>
+                            <div style="font-family: Cursive">
+                                {{form.errors}}
                             </div>
-                            <div class="form-group">
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
-                                </div>
-                                <label for="username"><i class="zmdi zmdi-phone material-icons-name"></i></label>
-                                {{form.phone}}
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
-                                </div>
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                {{form.email}}
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                </div>
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                {{form.password1}}
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                </div>
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                {{form.password2}}
-                            </div>
-                            <div class="form-group form-button">
-                                    <input type="submit"  class="form-submit" value="Register"/>
-                                </div>
+                        </div>
 
-                        </form>
-                        <div style="font-family: Cursive">{{form.errors}}</div>
-                    </div>
-
-                    <div class="signup-image">
-                        <figure><img src="{% static 'img/signup-image.jpg' %}" alt="sign up image"></figure>
-                        <a href="{% url 'Signin'%}" class="signup-image-link">I am already member</a>
+                        <div class="signup-image">
+                            <figure>
+                                <img
+                                    src="{% static 'img/signup-image.jpg' %}"
+                                    alt="sign up image"
+                                />
+                            </figure>
+                            <a
+                                href="{% url 'Signin'%}"
+                                class="signup-image-link"
+                                >I am already member</a
+                            >
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
+        <script>
+            var form_fields = document.getElementsByTagName("input");
+            form_fields[1].placeholder = "Username";
+            form_fields[2].placeholder = "Your fullname";
+            form_fields[3].placeholder = "Phone";
+            form_fields[4].placeholder = "Email";
+            form_fields[5].placeholder = "Enter password";
+            form_fields[6].placeholder = "Repeat your password";
 
-    </div>
-    <script>
-
-
-		var form_fields = document.getElementsByTagName('input')
-		form_fields[1].placeholder='Username';
-		form_fields[2].placeholder='Your fullname';
-        form_fields[3].placeholder='Phone';
-		form_fields[4].placeholder='Email';
-		form_fields[5].placeholder='Enter password';
-		form_fields[6].placeholder='Repeat your password';
-
-
-		for (var field in form_fields){
-			form_fields[field].className += ' form-control'
-		}
-	</script>
-    <!-- JS -->
-    <script src="{% static 'jquery.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-</body>
+            for (var field in form_fields) {
+                form_fields[field].className += " form-control";
+            }
+        </script>
+        <!-- JS -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+    </body>
 </html>
